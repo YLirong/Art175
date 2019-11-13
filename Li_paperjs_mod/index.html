@@ -45,13 +45,13 @@ Mousemove and Drag to see the effect
 
   function onMouseDrag(event) {
 
-
+    var rectangle = new Path.Rectangle(event.middlePoint,event.delta.length / 3);
+  	rectangle.fillColor = 'black';
 // var circle = new Path.Circle(mousePoint,event.delta.length / 2);
 
 // var rectangle = new Path.Rectangle(event.point,event.delta.length / 3);
 
-  	var rectangle = new Path.Rectangle(event.middlePoint,event.delta.length / 3);
-  	rectangle.fillColor = 'black';
+
     // circle.fillColor = 'black';
 
   }
