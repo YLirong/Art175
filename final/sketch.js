@@ -1,17 +1,19 @@
-var xize=50;
+
+//http://www.generative-gestaltung.de/2/sketches/?01_P/P_1_2_2_01
 var img1;
 var img;
+// var xize=50;
 var colors = [];
 var sortMode = null;
 var sound;
 var amp;
 function preload() {
   sound=loadSound("m1.mp3");
-  // img=loadImage('img/da.png');
+  img1=loadImage('img/da.png');
 
 // console.log(loadImage);
 img=loadImage('img/ada.png', setImage);
- // img1=loadImage('img/panda.jpg');
+  // img1=loadImage('img/panda.jpg');
 
 }
 
@@ -19,22 +21,39 @@ function setup() {
   createCanvas(730, 600); //add something ++bigger canvas
   noCursor();
   noStroke();
-  // amp=new p5.Amplitude();
-// sound.loop();
+    amp=new p5.Amplitude();
+ // sound.loop();
 // image(img1,0,0);
- // background(0);
+ background(0);
    // img.loadPixels();
   // colors = [];
 
 }
 
+
+function mousePressed(){
+  if (sound.isPlaying()) {
+      // .isPlaying() returns a boolean
+// push();
+var vol=amp.getLevel();
+// tint(50,50);
+      image(img1,450,450,vol,vol);
+// pop();
+      sound.pause(); // .play() will resumefrom .pause() position
+    } else {
+      sound.play();
+      image(img1,450,450,vol,vol);
+
+
+
+    }
+}
+
 function draw() {
-  sound.play();
 background(0);
 var tileCount = floor(width / max(5, mouseY));
 
    // var tileCount = floor(width / max(mouseX, 5));
-  // var rectSize = img.width / tileCount*2;
   var rectSize =width/ tileCount;
 
   img.loadPixels();
@@ -62,41 +81,6 @@ imageMode(CORNER);
     }
   }
 }
-// function mousePressed(){
-//
-//   // if (sound.isPlaying()){
-// sound.pause();
-// // imageMode(CENTER);
-// image(img1,0,0,width/2, height/2);
-// }
-//
-// }
-  // var vol=amp.getLevel();
-  // if (vol )
-
-   // writeFile([gd.ase.encode(colors)], gd.timestamp(), 'ase');
- //   sortMode = null;
- //   sortMode = gd.HUE;
- // sortMode = gd.SATURATION;
- // sortMode = gd.BRIGHTNESS;
- // sortMode = gd.GRAYSCALE;
-
-// }
-// function keyReleased() {
-//   if (key == 'c' || key == 'C') writeFile([gd.ase.encode(colors)], gd.timestamp(), 'ase');
-//   if (key == 's' || key == 'S') saveCanvas(gd.timestamp(), 'png');
-//
-//   if (key == '1') loadImage('data/pic1.jpg', setImage);
-//   if (key == '2') loadImage('data/pic2.jpg', setImage);
-//   if (key == '3') loadImage('data/pic3.jpg', setImage);
-//   if (key == '4') loadImage('data/pic4.jpg', setImage);
-//
-//   if (key == '5') sortMode = null;
-//   if (key == '6') sortMode = gd.HUE;
-//   if (key == '7') sortMode = gd.SATURATION;
-//   if (key == '8') sortMode = gd.BRIGHTNESS;
-//   if (key == '9') sortMode = gd.GRAYSCALE;
-// }
 
 function setImage(loadedImageFile) {
   img = loadedImageFile;
