@@ -30,7 +30,7 @@ function setup() {
 
 }
 
-
+//mouse control play the music
 function mousePressed(){
   if (sound.isPlaying()) {
       // .isPlaying() returns a boolean
@@ -44,8 +44,6 @@ var vol=amp.getLevel();
       sound.play();
       image(img1,450,450,vol,vol);
 
-
-
     }
 }
 
@@ -54,28 +52,30 @@ background(0);
 var tileCount = floor(width / max(5, mouseY));
 
    // var tileCount = floor(width / max(mouseX, 5));
-  var rectSize =width/ tileCount;
-
-  img.loadPixels();
-  colors = [];
-imageMode(CORNER);
+  var rectSize =width/ tileCount;//create grid with width, set the size
+  img.loadPixels(); //use the img pixels
+  colors = []; //color array
+// imageMode(CORNER);
+//create the pixels grid
   for (var gridY = 0; gridY < tileCount; gridY++) {
     for (var gridX = 0; gridX < tileCount; gridX++) {
       var px = int(gridX * rectSize);
       var py = int(gridY * rectSize);
       var i = (py * img.width + px) * 4;
+      //set hsb for grid
       var c = color(img.pixels[i], img.pixels[i + 1], img.pixels[i + 2], img.pixels[i + 3]);
       colors.push(c);
     }
 
   }
-
+//grid color
   gd.sortColors(colors, sortMode);
 
   var i = 0;
   for (var gridY = 0; gridY < tileCount; gridY++) {
     for (var gridX = 0; gridX < tileCount; gridX++) {
-      fill(colors[i]);
+      fill(colors[i]);  //color grid pixels
+      //set the shape of grid
       rect(gridX * rectSize, gridY * rectSize, rectSize, rectSize);
       i++;
     }
