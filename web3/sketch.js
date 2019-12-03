@@ -1,19 +1,28 @@
-
 //http://www.generative-gestaltung.de/2/sketches/?01_P/P_1_2_2_01
-var img1;
+// https://www.youtube.com/watch?v=NCCHQwNAN6Y
+// lesson from Kadenze
+
 var img;
-// var xize=50;
+var img1;
+var img2;
 var colors = [];
-var sortMode = null;
+var sortColors;
+var x=0;
+var y=0;
+var targetX=0;
+var targetY=0;
+var isBg = false;
 var sound;
 var amp;
+
 function preload() {
-  sound=loadSound("m1.mp3");
-  img1=loadImage('img/da.png');
+  sound=loadSound("m1.mp3"); //load audio
+  img1=loadImage('img/da.png'); //load 1st img
+  img2=loadImage('img/a.png'); //load 1st img
 
 // console.log(loadImage);
-img=loadImage('img/ada.png', setImage);
-  // img1=loadImage('img/panda.jpg');
+img=loadImage('img/bw.png', setImage); //load 2nd img
+
 
 }
 
@@ -22,43 +31,57 @@ function setup() {
   noCursor();
   noStroke();
     amp=new p5.Amplitude();
- // sound.loop();
-// image(img1,0,0);
- background(0);
-   // img.loadPixels();
-  // colors = [];
-
+    // sound.loop();
 }
 
-//mouse control play the music
 function mousePressed(){
+
   if (sound.isPlaying()) {
       // .isPlaying() returns a boolean
-// push();
-var vol=amp.getLevel();
-// tint(50,50);
-      image(img1,450,450,vol,vol);
-// pop();
+
       sound.pause(); // .play() will resumefrom .pause() position
     } else {
       sound.play();
-      image(img1,450,450,vol,vol);
+
 
     }
 }
 
-function draw() {
-background(0);
-var tileCount = floor(width / max(5, mouseY));
 
-   // var tileCount = floor(width / max(mouseX, 5));
+function draw() {
+if (isBg ==true){
+// fill(0);
+// rect(200,200,400,400);
+background(0);
+var level=amp.getLevel(); //read the mp3 soundtrack
+for(n=0; n<height; n++){
+let size=map(level,0,1,0,500);
+var easing=level; //set the easing speed
+var diffX = targetX-x; //where the mouse&line is
+x += diffX*easing; //using easing to controls the figures distance, size controls
+targetX =mouseX; //control the easing direction, figure move
+targetY=mouseY;
+
+var diffY = targetY-y; //where the mouse&line is
+y += diffY*easing;
+image(img2,(width/4),(height/4),size+x,size+y);
+image(img1,(width/2),(height/2),size+x,size+y);}
+}else {
+  // pixels size
+var tileCount = floor(img.width / max(5, mouseY));
+
   var rectSize =width/ tileCount;//create grid with width, set the size
+
+   // Lvar tileCount = floor(width / max(mouseX, 5));
+
+
   img.loadPixels(); //use the img pixels
   colors = []; //color array
 // imageMode(CORNER);
 //create the pixels grid
+for (var gridX = 0; gridX < tileCount; gridX++) {
   for (var gridY = 0; gridY < tileCount; gridY++) {
-    for (var gridX = 0; gridX < tileCount; gridX++) {
+
       var px = int(gridX * rectSize);
       var py = int(gridY * rectSize);
       var i = (py * img.width + px) * 4;
@@ -69,11 +92,11 @@ var tileCount = floor(width / max(5, mouseY));
 
   }
 //grid color
-  gd.sortColors(colors, sortMode);
+  sortColors(colors);
 
   var i = 0;
+  for (var gridX = 0; gridX < tileCount; gridX++) {
   for (var gridY = 0; gridY < tileCount; gridY++) {
-    for (var gridX = 0; gridX < tileCount; gridX++) {
       fill(colors[i]);  //color grid pixels
       //set the shape of grid
       rect(gridX * rectSize, gridY * rectSize, rectSize, rectSize);
@@ -82,6 +105,18 @@ var tileCount = floor(width / max(5, mouseY));
   }
 }
 
+}
+function mouseClicked() {
+
+   isBg=!isBg;
+
+
+  }
+
 function setImage(loadedImageFile) {
   img = loadedImageFile;
+}
+
+function sortColors(){
+
 }
