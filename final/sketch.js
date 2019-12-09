@@ -27,7 +27,13 @@ img=loadImage('img/bw.png', setImage); //load 2nd img
 }
 
 function setup() {
-  createCanvas(730, 600); //add something ++bigger canvas
+  var canvas = createCanvas(730, 600);
+
+ // Move the canvas so it’s inside <div id="sketch">.
+ canvas.parent('sketch');
+
+
+  // createCanvas(730, 600);
   noCursor();
   noStroke();
     amp=new p5.Amplitude();
@@ -50,8 +56,8 @@ function mousePressed(){
 
 function draw() {
 if (isBg ==true){
-// fill(0);
-// rect(200,200,400,400);
+fill(0);
+rect(200,200,400,400);
 // background(0);
 var level=amp.getLevel(); //read the mp3 soundtrack
 for(n=0; n<height; n++){

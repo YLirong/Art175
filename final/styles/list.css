@@ -1,10 +1,10 @@
-* {
+/* * {
 	box-sizing: border-box;
 }
 
 html,
 body {
-	font-family: 'Roboto';
+	font-family: 'Source Sans Pro', sans-serif;
 	margin: 0;
 }
 
@@ -72,4 +72,4 @@ a {
 	content: url('arrow.svg');
 	width: 2em;
 	margin-right: 0.5em;
-}
+} */
