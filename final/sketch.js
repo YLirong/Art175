@@ -28,52 +28,59 @@ img=loadImage('img/bw.png', setImage); //load 2nd img
 
 function setup() {
   var canvas = createCanvas(730, 600);
-
  // Move the canvas so it’s inside <div id="sketch">.
  canvas.parent('sketch');
-
 
   // createCanvas(730, 600);
   noCursor();
   noStroke();
     amp=new p5.Amplitude();
     // sound.loop();
+    // image(img2,0,0);
 }
 
 function mousePressed(){
 
   if (sound.isPlaying()) {
       // .isPlaying() returns a boolean
-
-      sound.pause(); // .play() will resumefrom .pause() position
+    sound.pause();
+       // .play() will resumefrom .pause() position
     } else {
       sound.play();
+      // var rectSize =width/2/ tileCount;
+//       if (isBg ==true){
+//       //
+//       // fill(0);
+//       // rect(200,200,400,400);
+//       // background(0);
+//       var level=amp.getLevel(); //read the mp3 soundtrack
+//
+//       let size=map(level,0,1,0,500);
+//       var easing=level; //set the easing speed
+//       var diffX = targetX-x; //where the mouse&line is
+//       x += diffX*easing; //using easing to controls the figures distance, size controls
+//       targetX =mouseX; //control the easing direction, figure move
+//       targetY=mouseY;
+//
+//       var diffY = targetY-y; //where the mouse&line is
+//       y += diffY*easing;
+//       image(img2,(width/4),(height/4),size+x,size+y);
+//       // image(img1,(width/2),(height/2),size+x,size+y);
+//     // }
+//
+// }
+   }
 
-
-    }
 }
 
+function draw(){
 
-function draw() {
-if (isBg ==true){
-fill(0);
-rect(200,200,400,400);
-// background(0);
-var level=amp.getLevel(); //read the mp3 soundtrack
-for(n=0; n<height; n++){
-let size=map(level,0,1,0,500);
-var easing=level; //set the easing speed
-var diffX = targetX-x; //where the mouse&line is
-x += diffX*easing; //using easing to controls the figures distance, size controls
-targetX =mouseX; //control the easing direction, figure move
-targetY=mouseY;
+  figure();
 
-var diffY = targetY-y; //where the mouse&line is
-y += diffY*easing;
-image(img2,(width/4),(height/4),size+x,size+y);
-// image(img1,(width/2),(height/2),size+x,size+y);
+
 }
-}else {
+
+function figure(){
   // pixels size
 var tileCount = floor(img.width / max(5, mouseY));
 
@@ -104,13 +111,14 @@ for (var gridX = 0; gridX < tileCount; gridX++) {
   var i = 0;
   for (var gridX = 0; gridX < tileCount; gridX++) {
   for (var gridY = 0; gridY < tileCount; gridY++) {
-      fill(colors[i]);  //color grid pixels
-      //set the shape of grid
-      rect(gridX * rectSize, gridY * rectSize, rectSize, rectSize);
-      i++;
-    }
+      fill(colors[i]);
+          i++;
+          rect(gridX * rectSize, gridY * rectSize, rectSize, rectSize);
+
+
   }
-}
+  }
+
 
 }
 function mouseClicked() {
