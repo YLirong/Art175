@@ -32,7 +32,7 @@ body{
   justify-content:center;
   align-items:center;
   height:100vh;
-  
+
 }
 
 
@@ -44,4 +44,9 @@ header{
   color: pink;
   text-align: center;
 
+}
+p{
+  color: white;
+  font-size: 16px;
+  text-align: center;
 }
