@@ -34,7 +34,7 @@ function setup() {
     // sound.loop();
 }
 
-function mousePressed(){
+function keyPressed(){
 
   if (sound.isPlaying()) {
       // .isPlaying() returns a boolean
@@ -50,8 +50,6 @@ function mousePressed(){
 
 function draw() {
 if (isBg ==true){
-// fill(0);
-// rect(200,200,400,400);
 background(0);
 var level=amp.getLevel(); //read the mp3 soundtrack
 for(n=0; n<height; n++){
@@ -66,7 +64,12 @@ var diffY = targetY-y; //where the mouse&line is
 y += diffY*easing;
 image(img2,(width/4),(height/4),size+x,size+y);
 image(img1,(width/2),(height/2),size+x,size+y);}
+
 }else {
+figure();
+
+}
+  function figure(){
   // pixels size
 var tileCount = floor(img.width / max(5, mouseY));
 

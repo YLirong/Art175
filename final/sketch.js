@@ -47,36 +47,35 @@ function mousePressed(){
        // .play() will resumefrom .pause() position
     } else {
       sound.play();
-      // var rectSize =width/2/ tileCount;
-//       if (isBg ==true){
-//       //
-//       // fill(0);
-//       // rect(200,200,400,400);
-//       // background(0);
-//       var level=amp.getLevel(); //read the mp3 soundtrack
-//
-//       let size=map(level,0,1,0,500);
-//       var easing=level; //set the easing speed
-//       var diffX = targetX-x; //where the mouse&line is
-//       x += diffX*easing; //using easing to controls the figures distance, size controls
-//       targetX =mouseX; //control the easing direction, figure move
-//       targetY=mouseY;
-//
-//       var diffY = targetY-y; //where the mouse&line is
-//       y += diffY*easing;
-//       image(img2,(width/4),(height/4),size+x,size+y);
-//       // image(img1,(width/2),(height/2),size+x,size+y);
-//     // }
-//
-// }
+
    }
 
 }
 
 function draw(){
-
-  figure();
-
+  // if (isBg ==true){
+  //       //
+  //       // fill(0);
+  //       // rect(200,200,400,400);
+  //       background(0);
+  //       var level=amp.getLevel(); //read the mp3 soundtrack
+  //
+  //       let size=map(level,0,1,0,500);
+  //       var easing=level; //set the easing speed
+  //       var diffX = targetX-x; //where the mouse&line is
+  //       x += diffX*easing; //using easing to controls the figures distance, size controls
+  //       targetX =mouseX; //control the easing direction, figure move
+  //       targetY=mouseY;
+  //
+  //       var diffY = targetY-y; //where the mouse&line is
+  //       y += diffY*easing;
+  //       // image(img2,(width/4),(height/4),size+x,size+y);
+  //       image(img1,(width/2),(height/2),size+x,size+y);
+  //     // }
+  //
+  // }else
+  // return figure();
+figure();
 
 }
 
